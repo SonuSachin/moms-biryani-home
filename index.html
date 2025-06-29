@@ -119,41 +119,4 @@
   </div>
 </section>
 
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UPI QR Code Payment</title>
-    <style>
-        body {
-            background-color: #000;
-            color: #fff;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
-        .qr-code {
-            margin-top: 20px;
-        }
-    </style>
-</head>
-<body>
-    <h1>Online Payment</h1>
-    <p>Scan & Pay Using UPI App</p>
-    <div class="qr-code" id="qr-code"></div>
-    <p>8088208835@ybl</p>
-
-    <script src="https:                                                        
-    <script>
-        var upiLink = "upi://pay?pa=8088208835@ybl&pn=Recipient%20Name&tr=1234567890&tn=Online%20Payment&am=100&cu=INR";
-        var qrCode = new QRCode(document.getElementById("qr-code"), {
-            text: upiLink,
-            width: 200,
-            height: 200,
-            colorDark : "         
-            colorLight : "#ffffff",
-            correctLevel : QRCode.CorrectLevel.H
-        });
-    </script>
-</body>
-</html>
+  
