@@ -1,0 +1,71 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #fff8e1;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #ffa726;
+  color: #000;
+  text-align: center;
+  padding: 20px;
+}
+
+.tagline {
+  color: crimson;
+  font-weight: bold;
+}
+
+.subtagline {
+  color: purple;
+  font-style: italic;
+}
+
+section {
+  padding: 20px;
+}
+
+.menu .item {
+  margin-bottom: 20px;
+}
+
+.menu h3 {
+  color: green;
+}
+
+.services ul,
+.extras ul {
+  list-style: none;
+  padding: 0;
+}
+
+.services li,
+.extras li {
+  padding: 5px 0;
+}
+
+.free-delivery {
+  color: purple;
+  font-weight: bold;
+}
+
+footer {
+  background: #ffcc80;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+  header, section, footer {
+    padding: 15px;
+  }
+  .menu ul, .services ul, .extras ul {
+    padding-left: 20px;
+  }
+}
