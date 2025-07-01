@@ -202,30 +202,6 @@ function sendOrder() {
 
   const orderID = generateOrderID();
 
-  // Example data
-const orderID = "MBH12345";
-const name = "John Doe";
-const mobile = "9876543210";
-const address = "123, Humnabad";
-const amount = 450;
-
-const items = [
-  { name: "Chicken Biryani", qty: "1kg" },
-  { name: "Egg Curry", qty: "500g" }
-];
-
-// Format item list
-let itemList = "";
-items.forEach((item, index) => {
-  itemList += `- ${item.name} - ${item.qty}\n`;
-});
-
-// Estimated delivery time (current time + 3 hours)
-const now = new Date();
-now.setHours(now.getHours() + 3);
-const options = { hour: '2-digit', minute: '2-digit' };
-const deliveryTime = now.toLocaleTimeString('en-IN', options);
-
 // ✅ Message to Vendor (Mom’s Biryani Home)
 const vendorMessage =
   `🛒 *Order Confirmation*\n` +
