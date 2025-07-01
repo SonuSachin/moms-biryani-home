@@ -18,24 +18,26 @@
     <h2>Our Menu</h2>
     <form id="orderForm">
       <label for="item">Select Item:</label>
-      <select id="item" required>
-        <option value="" disabled selected>Select Item</option>
-        <option value="Chicken Biryani">Chicken Biryani</option>
-        <option value="Egg Biryani">Egg Biryani</option>
-        <option value="Chicken Curry">Masala Chicken Curry</option>
-      </select>
+      <label for="item">Select Item:</label>
+<select id="item" required>
+  <option value="" disabled selected>Choose an item</option>
+  <option value="Chicken Biryani">Chicken Biryani</option>
+  <option value="Egg Biryani">Egg Biryani</option>
+  <option value="Chicken Curry">Masala Chicken Curry</option>
+</select>
 
-      <label for="quantity">Select Quantity:</label>
-      <select id="quantity" required>
-        <option value="" disabled selected>Select Quantity</option>
-      </select>
+<label for="quantity">Select Quantity:</label>
+<select id="quantity" required>
+  <option value="" disabled selected>Select Quantity</option>
+</select>
 
-      <p><strong>Total Amount:</strong> ₹<span id="total">0</span></p>
+<p><strong>Total Amount:</strong> ₹<span id="total">0</span></p>
 
-      <div class="payment">
-        <h3>Scan to Pay via PhonePe</h3>
-        <img src="IMG_20250701_230536.png" alt="Static PhonePe QR" width="200" id="phonepeQR" />
-      </div>
+<div class="payment">
+  <h3>Scan to Pay via PhonePe</h3>
+  <img src="IMG_20250701_230536.png" alt="PhonePe QR Code" width="200" id="phonepeQR" />
+</div>
+
 
       <a class="whatsapp-button" href="https://wa.me/918088208835?text=Hi%2C%20I%20want%20to%20order%20from%20Mom's%20Biryani%20Home" target="_blank">
         📱 Order on WhatsApp
@@ -44,59 +46,52 @@
   </section>
 
   <script>
-    const prices = {
-      "Chicken Biryani": {
-        "1/2 Kg": 449,
-        "1 Kg": 899,
-        "3 Kg": 2499,
-        "5 Kg": 4799,
-        "10 Kg": 9299
-      },
-      "Egg Biryani": {
-        "1/2 Kg": 369,
-        "1 Kg": 699,
-        "3 Kg": 1899,
-        "5 Kg": 3499,
-        "10 Kg": 6499
-      },
-      "Chicken Curry": {
-        "5 Kg": 2699,
-        "10 Kg": 4999
-      }
-    };
+const prices = {
+  "Chicken Biryani": {
+    "1/2 Kg": 449,
+    "1 Kg": 899,
+    "3 Kg": 2499,
+    "5 Kg": 4799,
+    "10 Kg": 9299
+  },
+  "Egg Biryani": {
+    "1/2 Kg": 369,
+    "1 Kg": 699,
+    "3 Kg": 1899,
+    "5 Kg": 3499,
+    "10 Kg": 6499
+  },
+  "Chicken Curry": {
+    "5 Kg": 2699,
+    "10 Kg": 4999
+  }
+};
 
-    const itemDropdown = document.getElementById("item");
-    const quantityDropdown = document.getElementById("quantity");
-    const totalSpan = document.getElementById("total");
-    const upiQR = document.getElementById("upiQR");
+const itemDropdown = document.getElementById("item");
+const quantityDropdown = document.getElementById("quantity");
+const totalSpan = document.getElementById("total");
 
-    itemDropdown.addEventListener("change", function () {
-      const selectedItem = itemDropdown.value;
-      const quantities = Object.keys(prices[selectedItem]);
+itemDropdown.addEventListener("change", function () {
+  const selectedItem = itemDropdown.value;
+  const quantities = Object.keys(prices[selectedItem]);
 
-      quantityDropdown.innerHTML = '<option value="" disabled selected>Select Quantity</option>';
-      quantities.forEach(qty => {
-        const option = document.createElement("option");
-        option.value = qty;
-        option.textContent = qty;
-        quantityDropdown.appendChild(option);
-      });
-    });
-
-    quantityDropdown.addEventListener("change", function () {
-      const item = itemDropdown.value;
-      const qty = quantityDropdown.value;
-      const amount = prices[item][qty];
-      totalSpan.textContent = amount;
-
-  // No need to change QR code image
+  // Clear and populate quantity dropdown
+  quantityDropdown.innerHTML = '<option value="" disabled selected>Select Quantity</option>';
+  quantities.forEach(qty => {
+    const option = document.createElement("option");
+    option.value = qty;
+    option.textContent = qty;
+    quantityDropdown.appendChild(option);
+  });
 });
 
+quantityDropdown.addEventListener("change", function () {
+  const item = itemDropdown.value;
+  const qty = quantityDropdown.value;
+  const amount = prices[item][qty];
+  totalSpan.textContent = amount;
+});
+</script>
 
-      // Update QR code with amount
-      const upiURL = `https://upi-qr-code-generator.vercel.app/api/qr?upi=8088208835&name=Mom%27s%20Biryani&amount=${amount}&note=Biryani%20Order`;
-      //upiQR.src = upiURL;
-    });
-  </script>
 </body>
 </html>
