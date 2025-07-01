@@ -34,7 +34,7 @@
 
       <div class="payment">
         <h3>Pay Using PhonePe</h3>
-        <img src="https://upi-qr-code-generator.vercel.app/api/qr?upi=8088208835&name=Mom%27s%20Biryani&amount=0&note=Biryani%20Order" alt="PhonePe QR Code" id="upiQR" width="200"/>
+        <img src="IMG_20250701_230536.png" alt="PhonePe QR Code" id="upiQR" width="200"/>
       </div>
 
       <a class="whatsapp-button" href="https://wa.me/918088208835?text=Hi%2C%20I%20want%20to%20order%20from%20Mom's%20Biryani%20Home" target="_blank">
@@ -90,7 +90,7 @@
       totalSpan.textContent = amount;
 
       // Update QR code with amount
-      <img src="IMG_20250701_230536.png" alt="PhonePe QR Code" id="upiQR" width="200"/>
+      const upiURL = `https://upi-qr-code-generator.vercel.app/api/qr?upi=8088208835&name=Mom%27s%20Biryani&amount=${amount}&note=Biryani%20Order`;
       upiQR.src = upiURL;
     });
   </script>
