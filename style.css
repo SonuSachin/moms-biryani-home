@@ -58,6 +58,18 @@ input, textarea {
   font-size: 16px;
 }
 
+.confirmation-popup {
+  display: none;
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #e8f5e9;
+  border: 1px solid #4caf50;
+  color: #2e7d32;
+  font-size: 16px;
+  line-height: 1.5;
+  border-radius: 6px;
+}
+
 .whatsapp-button {
   display: inline-block;
   margin-top: 15px;
