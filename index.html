@@ -161,7 +161,9 @@ function sendOrder() {
   }
 
   const orderID = generateOrderID();
-  const message = `🛒 *Order Confirmation*\\n\\nOrder ID: ${orderID}\\nName: ${name}\\nMobile: ${mobile}\\nAddress: ${address}\\nItem: ${item}\\nQuantity: ${qty}\\nAmount: ₹${amount}\\n\\nThank you for ordering from Mom's Biryani Home!`;
+
+  // Single-line vendor message
+  const message = `🛒 *Order Confirmation* Order ID: ${orderID} Name: ${name} Mobile: ${mobile} Address: ${address} Item: ${item} Quantity: ${qty} Amount: ₹${amount} Thank you for ordering from Mom's Biryani Home!`;
 
   // Show confirmation popup
   document.getElementById("confirmation").style.display = "block";
@@ -171,12 +173,12 @@ function sendOrder() {
   const vendorURL = `https://wa.me/918088208835?text=${encodeURIComponent(message)}`;
   window.open(vendorURL, "_blank");
 
-  // WhatsApp to Customer
-  const customerMessage = `✅ Your order is received by Mom’s Biryani Home.\\nOrder ID: ${orderID}\\n📦 Please wait 3 hours to receive your order. Thank you!`;
+  // Single-line customer message
+  const customerMessage = `✅ Your order is received by Mom’s Biryani Home. Order ID: ${orderID} 📦 Please wait 3 hours to receive your order. Thank you!`;
   const customerURL = `https://wa.me/91${mobile}?text=${encodeURIComponent(customerMessage)}`;
   setTimeout(() => window.open(customerURL, "_blank"), 1000);
 }
 </script>
-  
+
 </body>
 </html>
