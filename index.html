@@ -167,7 +167,6 @@ function sendOrder() {
 // ✅ Show confirmation popup on screen
 document.getElementById("confirmation").style.display = "block";
 document.getElementById("confirmAmount").textContent = amount;
-document.getElementById("confirmation").scrollIntoView({ behavior: 'smooth' });
 
   if (!item || !qty || !amount || !name || !mobile || !address) {
     alert("Please fill all fields.");
