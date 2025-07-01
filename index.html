@@ -31,6 +31,17 @@
   <option value="" disabled selected>Select Quantity</option>
 </select>
 
+<label for="customerName">Your Name:</label>
+<input type="text" id="customerName" required placeholder="Enter your name" />
+
+<label for="mobileNumber">Mobile Number:</label>
+<input type="tel" id="mobileNumber" required pattern="[0-9]{10}" placeholder="Enter 10-digit number" />
+
+<label for="address">Delivery Address:</label>
+<textarea id="address" required placeholder="Enter your full address"></textarea>
+
+<button type="button" onclick="sendOrder()">Submit Order</button>
+
 <p><strong>Total Amount:</strong> ₹<span id="total">0</span></p>
 
 <div class="payment">
@@ -92,6 +103,35 @@ quantityDropdown.addEventListener("change", function () {
   const amount = prices[item][qty];
   totalSpan.textContent = amount;
 });
+
+    function generateOrderID() {
+  return 'ORD' + Math.floor(100000 + Math.random() * 900000); // e.g., ORD784321
+}
+
+function sendOrder() {
+  const item = document.getElementById("item").value;
+  const qty = document.getElementById("quantity").value;
+  const amount = document.getElementById("total").textContent;
+  const name = document.getElementById("customerName").value;
+  const mobile = document.getElementById("mobileNumber").value;
+  const address = document.getElementById("address").value;
+
+  if (!item || !qty || !amount || !name || !mobile || !address) {
+    alert("Please fill all fields.");
+    return;
+  }
+
+  const orderID = generateOrderID();
+  const message = `🛒 *Order Confirmation*\n\nOrder ID: ${orderID}\nName: ${name}\nMobile: ${mobile}\nAddress: ${address}\nItem: ${item}\nQuantity: ${qty}\nAmount: ₹${amount}\n\nThank you for ordering from Mom's Biryani Home!`;
+
+  // Send to Mom's Biryani Home
+  const vendorURL = `https://wa.me/918088208835?text=${encodeURIComponent(message)}`;
+  window.open(vendorURL, "_blank");
+
+  // Send confirmation to customer
+  const customerURL = `https://wa.me/91${mobile}?text=${encodeURIComponent(message)}`;
+  setTimeout(() => window.open(customerURL, "_blank"), 1000); // small delay
+}
 </script>
 
 </body>
