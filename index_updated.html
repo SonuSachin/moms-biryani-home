@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mom's Biryani Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Mom's Biryani Home</h1>
+    <p class="tagline">Taste The Best From The Rest</p>
+    <p class="subtagline">High Quality Homemade Food's</p>
+  </header>
+
+  <section class="preorder">
+    <h2>Biryani By Kilo - Pre Order</h2>
+    <p>Please give us 3 hours to cook & deliver it hot for you.</p>
+  </section>
+
+  <section class="menu">
+    <h2>Our Menu</h2>
+    <div class="item">
+      <h3>Chicken Biryani</h3>
+      <ul>
+        <li>1/2 Kg - ₹449 (Serves 2)</li>
+        <li>1 Kg - ₹899 (Serves 5)</li>
+        <li>3 Kg - ₹2499 (Serves 15)</li>
+        <li>5 Kg - ₹4799 (Serves 30)</li>
+        <li>10 Kg - ₹9299 (Serves 65)</li>
+      </ul>
+    </div>
+    <div class="item">
+      <h3>Egg Biryani</h3>
+      <ul>
+        <li>1/2 Kg - ₹369 (5 Eggs, Serves 2)</li>
+        <li>1 Kg - ₹699 (12 Eggs, Serves 5)</li>
+        <li>3 Kg - ₹1899 (25 Eggs, Serves 15)</li>
+        <li>5 Kg - ₹3499 (40 Eggs, Serves 25)</li>
+        <li>10 Kg - ₹6499 (65 Eggs, Serves 50)</li>
+      </ul>
+    </div>
+    <div class="item">
+      <h3>Masala Chicken Curry with Jeera Rice</h3>
+      <ul>
+        <li>5 Kg - ₹2699 (Serves 25)</li>
+        <li>10 Kg - ₹4999 (Serves 50)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="services">
+    <h2>Our Services</h2>
+    <ul>
+      <li>Birthday Events</li>
+      <li>Family Events</li>
+      <li>Office Events</li>
+    </ul>
+  </section>
+
+  <section class="extras">
+    <h2>We Provide</h2>
+    <ul>
+      <li>Home Delivery</li>
+      <li>Office Delivery</li>
+      <li>Take Away</li>
+      <li>Drive Thru</li>
+    </ul>
+    <h2>Add Ons</h2>
+    <ul>
+      <li>Water Bottle</li>
+      <li>Soft Drinks</li>
+    </ul>
+    <p class="free-delivery">Free Delivery within 3KM Radius</p>
+  </section>
+
+  <footer>
+    <h2>Order Now</h2>
+    <p>📞 6363646569 | 8088208835</p>
+    <p>📍 Service Area: Humnabad</p>
+  </footer>
+
+<section class="order-section">
+  <h2>Place Your Order</h2>
+
+  <form id="orderForm">
+    <label for="item">Select Item:</label>
+    <select id="item" required>
+      <option value="" disabled selected>Choose an item</option>
+      <option value="Chicken Biryani">Chicken Biryani</option>
+      <option value="Egg Biryani">Egg Biryani</option>
+      <option value="Chicken Curry">Masala Chicken Curry</option>
+    </select>
+
+    <label for="quantity">Select Quantity:</label>
+    <select id="quantity" required>
+      <!-- Options will be added dynamically -->
+    </select>
+
+    <p><strong>Total Amount:</strong> ₹<span id="total">0</span></p>
+
+    <h3>Scan & Pay</h3>
+    <img src="https://upi-qr-code-generator.vercel.app/api/qr?upi=8088208835&name=Mom%27s%20Biryani&amount=0&note=Biryani%20Order" alt="UPI QR Code" id="upiQR" width="200">
+  </form>
+</section>
+
+<script>
+const prices = {
+  "Chicken Biryani": {
+    "1/2 Kg": 449,
+    "1 Kg": 899,
+    "3 Kg": 2499,
+    "5 Kg": 4799,
+    "10 Kg": 9299
+  },
+  "Egg Biryani": {
+    "1/2 Kg": 369,
+    "1 Kg": 699,
+    "3 Kg": 1899,
+    "5 Kg": 3499,
+    "10 Kg": 6499
+  },
+  "Chicken Curry": {
+    "5 Kg": 2699,
+    "10 Kg": 4999
+  }
+};
+
+const itemDropdown = document.getElementById("item");
+const quantityDropdown = document.getElementById("quantity");
+const totalSpan = document.getElementById("total");
+const upiQR = document.getElementById("upiQR");
+
+itemDropdown.addEventListener("change", function () {
+  const selectedItem = itemDropdown.value;
+  const quantities = Object.keys(prices[selectedItem]);
+
+  quantityDropdown.innerHTML = '<option value="" disabled selected>Select Quantity</option>';
+  quantities.forEach(qty => {
+    const option = document.createElement("option");
+    option.value = qty;
+    option.textContent = qty;
+    quantityDropdown.appendChild(option);
+  });
+});
+
+quantityDropdown.addEventListener("change", function () {
+  const item = itemDropdown.value;
+  const qty = quantityDropdown.value;
+  const amount = prices[item][qty];
+  totalSpan.textContent = amount;
+
+  // Update QR Code with dynamic amount
+  const upiURL = `https://upi-qr-code-generator.vercel.app/api/qr?upi=8088208835&name=Mom%27s%20Biryani&amount=${amount}&note=Biryani%20Order`;
+  upiQR.src = upiURL;
+});
+</script>
+</body>
+
+</html>

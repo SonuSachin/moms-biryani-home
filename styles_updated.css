@@ -1,0 +1,97 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #fff8e1;
+  color: #333;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background: #ffa726;
+  color: #000;
+  text-align: center;
+  padding: 20px;
+}
+
+.tagline {
+  color: crimson;
+  font-weight: bold;
+}
+
+.subtagline {
+  color: purple;
+  font-style: italic;
+}
+
+section {
+  padding: 20px;
+}
+
+.menu .item {
+  margin-bottom: 20px;
+}
+
+.menu h3 {
+  color: green;
+}
+
+.services ul,
+.extras ul {
+  list-style: none;
+  padding: 0;
+}
+
+.services li,
+.extras li {
+  padding: 5px 0;
+}
+
+.free-delivery {
+  color: purple;
+  font-weight: bold;
+}
+
+footer {
+  background: #ffcc80;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+  header, section, footer {
+    padding: 15px;
+  }
+  .menu ul, .services ul, .extras ul {
+    padding-left: 20px;
+  }
+}
+
+
+.order-section {
+  padding: 20px;
+  background-color: #fff3e0;
+  border-top: 2px solid #ffa726;
+}
+
+.order-section select {
+  display: block;
+  margin: 10px 0;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.order-section label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+}
+
+#upiQR {
+  margin-top: 15px;
+  border: 2px solid #ccc;
+  padding: 10px;
+}
