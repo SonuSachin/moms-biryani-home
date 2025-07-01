@@ -202,21 +202,60 @@ function sendOrder() {
 
   const orderID = generateOrderID();
 
-  // Single-line vendor message
-  const message = `🛒 *Order Confirmation* Order ID: ${orderID} Name: ${name} Mobile: ${mobile} Address: ${address} Item: ${item} Quantity: ${qty} Amount: ₹${amount} Thank you for ordering from Mom's Biryani Home!`;
+  // Example data
+const orderID = "MBH12345";
+const name = "John Doe";
+const mobile = "9876543210";
+const address = "123, Humnabad";
+const amount = 450;
 
-  // Show confirmation popup
-  document.getElementById("confirmation").style.display = "block";
-  document.getElementById("confirmAmount").textContent = amount;
+const items = [
+  { name: "Chicken Biryani", qty: "1kg" },
+  { name: "Egg Curry", qty: "500g" }
+];
 
-  // WhatsApp to Vendor
-  const vendorURL = `https://wa.me/918088208835?text=${encodeURIComponent(message)}`;
-  window.open(vendorURL, "_blank");
+// Format item list
+let itemList = "";
+items.forEach((item, index) => {
+  itemList += `- ${item.name} - ${item.qty}\n`;
+});
 
-  // Single-line customer message
-  const customerMessage = `✅ Your order is received by Mom’s Biryani Home. Order ID: ${orderID} 📦 Please wait 3 hours to receive your order. Thank you!`;
-  const customerURL = `https://wa.me/91${mobile}?text=${encodeURIComponent(customerMessage)}`;
-  setTimeout(() => window.open(customerURL, "_blank"), 1000);
+// Estimated delivery time (current time + 3 hours)
+const now = new Date();
+now.setHours(now.getHours() + 3);
+const options = { hour: '2-digit', minute: '2-digit' };
+const deliveryTime = now.toLocaleTimeString('en-IN', options);
+
+// Vendor message
+const message =
+  `🛒 *Order Confirmation*\n` +
+  `Order ID: ${orderID}\n` +
+  `Name: ${name}\n` +
+  `Mobile: ${mobile}\n` +
+  `Address: ${address}\n\n` +
+  `📦 *Order Items:*\n${itemList}\n` +
+  `💰 Total Amount: ₹${amount}\n\n` +
+  `Thank you for ordering from Mom's Biryani Home!`;
+
+// Show confirmation popup
+document.getElementById("confirmation").style.display = "block";
+document.getElementById("confirmAmount").textContent = amount;
+
+// Send to Vendor
+const vendorURL = `https://wa.me/918088208835?text=${encodeURIComponent(message)}`;
+window.open(vendorURL, "_blank");
+
+// Customer message
+const customerMessage =
+  `✅ Your order has been received by Mom’s Biryani Home.\n` +
+  `Order ID: ${orderID}\n\n` +
+  `📦 Your meal is being prepared.\n` +
+  `🕒 Expected delivery by ${deliveryTime}\n\n` +
+  `Thank you for choosing us! 🙏`;
+
+const customerURL = `https://wa.me/91${mobile}?text=${encodeURIComponent(customerMessage)}`;
+setTimeout(() => window.open(customerURL, "_blank"), 1000);
+
 }
 </script>
 
