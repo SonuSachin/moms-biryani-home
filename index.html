@@ -82,14 +82,6 @@
 
 <button type="button" onclick="sendOrder()">Submit Order</button>
 
-<!-- Confirmation Popup -->
-<div id="confirmation" class="confirmation-popup" style="display:none;">
-  ✅ Your order has been submitted.<br>
-  📲 Please complete the payment of ₹<span id="confirmAmount"></span> by scanning the QR code or paying to <strong>8088208835</strong> on PhonePe.<br><br>
-  Once payment is done, your order will be confirmed.<br>
-  🕒 Please wait 3 hours to receive your delicious food from Mom's Biryani Home!
-</div>
-      
 <p><strong>Total Amount:</strong> ₹<span id="total">0</span></p>
 
 <div class="payment">
@@ -103,6 +95,14 @@
         📱 Order on WhatsApp
       </a>
     </form>
+    
+    <!-- Confirmation Popup -->
+<div id="confirmation" class="confirmation-popup" style="display:none; padding: 15px; background: #e6ffe6; border: 1px solid #5cb85c; margin-top: 20px; text-align: center;">
+  ✅ Your order has been submitted.<br>
+  📲 Please complete the payment of ₹<span id="confirmAmount"></span> by scanning the QR code or paying to <strong>8088208835</strong> on PhonePe.<br><br>
+  Once payment is done, your order will be confirmed.<br>
+  🕒 Please wait 3 hours to receive your delicious food from Mom's Biryani Home!
+</div>
   </section>
 
   <script>
@@ -164,6 +164,10 @@ function sendOrder() {
   const name = document.getElementById("customerName").value;
   const mobile = document.getElementById("mobileNumber").value;
   const address = document.getElementById("address").value;
+// ✅ Show confirmation popup on screen
+document.getElementById("confirmation").style.display = "block";
+document.getElementById("confirmAmount").textContent = amount;
+document.getElementById("confirmation").scrollIntoView({ behavior: 'smooth' });
 
   if (!item || !qty || !amount || !name || !mobile || !address) {
     alert("Please fill all fields.");
@@ -201,10 +205,6 @@ const customerMessage =
 
 const customerURL = `https://wa.me/91${mobile}?text=${encodeURIComponent(customerMessage)}`;
 setTimeout(() => window.open(customerURL, "_blank"), 1000);
-
-// ✅ Show confirmation popup on screen
-document.getElementById("confirmation").style.display = "block";
-document.getElementById("confirmAmount").textContent = amount;
 </script>
 
 </body>
