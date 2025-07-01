@@ -226,8 +226,8 @@ now.setHours(now.getHours() + 3);
 const options = { hour: '2-digit', minute: '2-digit' };
 const deliveryTime = now.toLocaleTimeString('en-IN', options);
 
-// Vendor message
-const message =
+// ✅ Message to Vendor (Mom’s Biryani Home)
+const vendorMessage =
   `🛒 *Order Confirmation*\n` +
   `Order ID: ${orderID}\n` +
   `Name: ${name}\n` +
@@ -242,10 +242,10 @@ document.getElementById("confirmation").style.display = "block";
 document.getElementById("confirmAmount").textContent = amount;
 
 // Send to Vendor
-const vendorURL = `https://wa.me/918088208835?text=${encodeURIComponent(message)}`;
+const vendorURL = `https://wa.me/918088208835?text=${encodeURIComponent(vendorMessage)}`;
 window.open(vendorURL, "_blank");
 
-// Customer message
+// ✅ Message to Customer
 const customerMessage =
   `✅ Your order has been received by Mom’s Biryani Home.\n` +
   `Order ID: ${orderID}\n\n` +
