@@ -202,6 +202,12 @@ function sendOrder() {
 
   const orderID = generateOrderID();
 
+// Prepare item list as bullet points
+let itemList = "";
+items.forEach(item => {
+  itemList += `- ${item.name} - ${item.qty}\n`;
+});
+
 // ✅ Message to Vendor (Mom’s Biryani Home)
 const vendorMessage =
   `🛒 *Order Confirmation*\n` +
@@ -213,26 +219,22 @@ const vendorMessage =
   `💰 Total Amount: ₹${amount}\n\n` +
   `Thank you for ordering from Mom's Biryani Home!`;
 
-// Show confirmation popup
-document.getElementById("confirmation").style.display = "block";
-document.getElementById("confirmAmount").textContent = amount;
-
-// Send to Vendor
 const vendorURL = `https://wa.me/918088208835?text=${encodeURIComponent(vendorMessage)}`;
-window.open(vendorURL, "_blank");
+window.open(vendorURL, "_blank"); // Send to vendor
 
-// ✅ Message to Customer
+// ✅ Message to Customer (NO delivery time included)
 const customerMessage =
   `✅ Your order has been received by Mom’s Biryani Home.\n` +
   `Order ID: ${orderID}\n\n` +
-  `📦 Your meal is being prepared.\n` +
-  `🕒 Expected delivery by ${deliveryTime}\n\n` +
+  `📦 Your meal is being prepared.\n\n` +
   `Thank you for choosing us! 🙏`;
 
 const customerURL = `https://wa.me/91${mobile}?text=${encodeURIComponent(customerMessage)}`;
 setTimeout(() => window.open(customerURL, "_blank"), 1000);
 
-}
+// ✅ Show confirmation popup on screen
+document.getElementById("confirmation").style.display = "block";
+document.getElementById("confirmAmount").textContent = amount;
 </script>
 
 </body>
