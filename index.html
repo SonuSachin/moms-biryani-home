@@ -16,22 +16,6 @@
 
 <!-- 🔔 Blinking Alert Message -->
 <style>
-  .alert-box {
-    background-color: #fff3cd;
-    color: #856404;
-    padding: 12px;
-    border: 2px solid #ffc107;
-    border-radius: 10px;
-    font-family: Arial, sans-serif;
-    width: 50%;
-    margin: 20px auto;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    font-weight: bold;
-    text-align: center;
-    line-height: 1.4;
-    font-size: 14px;
-  }
-
   .blinking-icon {
     animation: blink 1.5s steps(1, start) infinite;
     display: inline-block;
@@ -42,9 +26,18 @@
       opacity: 0;
     }
   }
+
+  .alert-text {
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #a94442;
+    text-align: center;
+    margin-top: 20px;
+    line-height: 1.6;
+  }
 </style>
 
-<div class="alert-box">
+<div class="alert-text">
   <span class="blinking-icon">🚫</span> Sorry! We do not deliver beyond 3 km from Humnabad Bus Stand, Karnataka (PIN: 585330).<br>
   🕒 Open between 10 AM to 7 PM.
 </div>
