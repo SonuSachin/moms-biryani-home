@@ -152,36 +152,6 @@ quantityDropdown.addEventListener("change", function () {
   totalSpan.textContent = amount;
 });
 
-    function generateOrderID() {
-  return 'ORD' + Math.floor(100000 + Math.random() * 900000); // e.g., ORD784321
-}
-
-function sendOrder() {
-  const item = document.getElementById("item").value;
-  const qty = document.getElementById("quantity").value;
-  const amount = document.getElementById("total").textContent;
-  const name = document.getElementById("customerName").value;
-  const mobile = document.getElementById("mobileNumber").value;
-  const address = document.getElementById("address").value;
-
-  if (!item || !qty || !amount || !name || !mobile || !address) {
-    alert("Please fill all fields.");
-    return;
-  }
-
-  const orderID = generateOrderID();
-  const message = `🛒 *Order Confirmation*\n\nOrder ID: ${orderID}\nName: ${name}\nMobile: ${mobile}\nAddress: ${address}\nItem: ${item}\nQuantity: ${qty}\nAmount: ₹${amount}\n\nThank you for ordering from Mom's Biryani Home!`;
-
-  // Send to Mom's Biryani Home
-  const vendorURL = `https://wa.me/918088208835?text=${encodeURIComponent(message)}`;
-  window.open(vendorURL, "_blank");
-
-  // Send confirmation to customer
-  const customerURL = `https://wa.me/91${mobile}?text=${encodeURIComponent(message)}`;
-  setTimeout(() => window.open(customerURL, "_blank"), 1000); // small delay
-}
-</script>
-
 <script>
 function generateOrderID() {
   return 'ORD' + Math.floor(100000 + Math.random() * 900000);
