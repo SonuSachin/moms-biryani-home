@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mom's Biryani Home</title>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .countdown {
+      font-weight: bold;
+      color: red;
+      margin-top: 10px;
+    }
+    .submit-button {
+      display: block;
+      background-color: green;
+      color: white;
+      padding: 20px;
+      font-size: 20px;
+      margin-top: 20px;
+      border: none;
+      border-radius: 10px;
+      width: 100%;
+    }
+    .addons {
+      margin-top: 15px;
+    }
+    .addons select, .addons input[type="number"] {
+      margin: 5px;
+    }
+    .search-section {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #fff3e0;
+    }
+    .menu-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+    .menu-images img {
+      width: 100%;
+      border-radius: 10px;
+      border: 2px solid #ccc;
+    }
+    .vendor-section button {
+      margin: 5px;
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      border-radius: 5px;
+      background-color: #00796b;
+      color: white;
+      cursor: pointer;
+    }
+    .vendor-section button:hover {
+      background-color: #004d40;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Mom's Biryani Home</h1>
+    <p class="tagline">Taste The Best From The Rest</p>
+    <p class="subtagline">High Quality Homemade Food's</p>
+  </header>
+
+  <section class="menu">
+    <h2>Our Menu</h2>
+    <div class="menu-images">
+      <div>
+        <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-XOenWsAIg5Uad4NeRLgO2hCV/user-YB8mRyUtQ3YdGx0spZ3rRSrM/img-L4PxMS6mJqFqTYdLs8gHUGgz.png" alt="Chicken Biryani">
+        <p>Chicken Biryani</p>
+      </div>
+      <div>
+        <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-XOenWsAIg5Uad4NeRLgO2hCV/user-YB8mRyUtQ3YdGx0spZ3rRSrM/img-PP8Q6KUIKPXPTTZ3jZmiMxIR.png" alt="Egg Biryani">
+        <p>Egg Biryani</p>
+      </div>
+      <div>
+        <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-XOenWsAIg5Uad4NeRLgO2hCV/user-YB8mRyUtQ3YdGx0spZ3rRSrM/img-fL5R6FNBQwulFx3sofnB7kXD.png" alt="Chicken Curry with Jeera Rice">
+        <p>Chicken Curry with Jeera Rice</p>
+      </div>
+      <div>
+        <img src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-XOenWsAIg5Uad4NeRLgO2hCV/user-YB8mRyUtQ3YdGx0spZ3rRSrM/img-gEFDb7bTcMOfYtxqNwleugZo.png" alt="Vegetable Biryani">
+        <p>Vegetable Biryani</p>
+      </div>
+    </div>
+    <form id="orderForm">
+      <!-- Form content skipped for brevity in code sample -->
+    </form>
+  </section>
+
+  <section class="vendor-section" style="padding:20px; background:#e8f5e9; margin-top:20px">
+    <h3>Vendor WhatsApp Controls</h3>
+    <p>Send status updates to customers via WhatsApp:</p>
+    <button onclick="sendStatus('Please make the payment to prepare the order.')">💰 Request Payment</button>
+    <button onclick="sendStatus('Payment received – order is being prepared.')">🍳 Preparing Order</button>
+    <button onclick="sendStatus('Order will be delivered soon.')">🚚 Delivery Soon</button>
+    <button onclick="sendStatus('Order is on the way.')">📦 On The Way</button>
+    <button onclick="sendStatus('Order is delivered.')">✅ Delivered</button>
+  </section>
+
+  <script>
+    function sendStatus(message) {
+      const customerNumber = '918088208835';
+      const fullMessage = `Hello, update from Mom's Biryani Home:\n${message}`;
+      window.open(`https://wa.me/${customerNumber}?text=${encodeURIComponent(fullMessage)}`, '_blank');
+    }
+  </script>
+</body>
+</html>
